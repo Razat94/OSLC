@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html>
 
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
 
@@ -39,6 +43,7 @@ $(document).ready(function(){
 		font-family: 'Source Sans Pro';
 		font-style: normal;
 		font-weight: 300;
+		outline:none;
 	}
 	
 	#header {
@@ -80,7 +85,8 @@ $(document).ready(function(){
 	}
 	
 	#buttonsContainer .menuButtons:hover {
-		border-bottom: 1px solid #d9d9d9;
+		border-bottom: 1px solid #cc0000;
+		color: rgb(204, 0, 0);
 	}
 	
 	#mainMenu, .mainButtons { 
@@ -122,7 +128,8 @@ $(document).ready(function(){
 		}
 		
 		.mainButtons:hover {
-			//border-bottom: 1px solid white;
+			border-top: 1px solid #cc0000;
+			border-bottom: 1px solid #cc0000;
 			color: rgb(204, 0, 0);//#cc0000;
 		}
 	}
