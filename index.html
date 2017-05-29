@@ -3,161 +3,35 @@
 
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel = "stylesheet" type = "text/css" href = "https://rawgit.com/Razat94/OSLC/master/header/header.css">
 	</head>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://rawgit.com/Razat94/OSLC/master/header/header.js" type="text/javascript"></script>
 
-$(document).ready(function(){
+	<body>
+
+		<div id = "header">
+			<img src = "https://raw.githubusercontent.com/Razat94/OSTC/master/Github%20Images/OSLC%20OG.jpg" id = "OG">
 	
-	// The resize event is sent to the window element when the size of the browser window changes:
-	$( window ).resize(function() {
+			<div id = "buttonsContainer">
+				<button class = "menuButtons">Home</button>
+				<button class = "menuButtons">Classes</button>
+				<button class = "menuButtons">Workshops</button>
+				<button class = "menuButtons">About</button>
+				<button class = "menuButtons">Contact</button>
+			</div>
+		</div>
 
-		// if statemnt must go within this function!
-		// otherwise, if the if statement was set outside of the funciton,
-		// then the code will only be executed once when the document is ready.
+		<!-- Display the "Menu" Buttons" when Max Width is 738 -->
+		<button id = "mainMenu"> Menu
+			<button class = "mainButtons">Home</button>
+			<button class = "mainButtons">Classes</button>
+			<button class = "mainButtons">Workshops</button>
+			<button class = "mainButtons">About</button>
+			<button class = "mainButtons">Contact</button>
+		</button>
 		
-		// Behind the scene, jQuery's hide() and show() just set display: none or display: block, respectively.
-		if ( $(window).width() > 752 ) {
-			$(".mainButtons").hide();
-			// $('.mainButtons').css('display','none'); // this also could've worked.
-		}
-		
-	});
+	</body>
 	
-    $("#mainMenu").click(function(){
-        $(".mainButtons").slideToggle();
-    });
-	
-});
-</script>
-
-<style>
-	html, body {
-		margin: 0;
-		padding: 0;
-	}
-	
-	button {
-		font-size: 18px;
-		font-family: 'Source Sans Pro';
-		font-style: normal;
-		font-weight: 300;
-		outline:none;
-	}
-	
-	#header {
-		background-color: #f2f2f2;
-		min-height: 100px;
-		height: auto;
-		width: 90%;
-		display: block;
-		margin-left: 5%;
-		margin-right: 5%;
-		border-bottom: 1px solid white;
-	}
-
-	#OG {
-		border: 0px solid red;
-		width: 300px;
-		margin-left: 1%;
-		// Width 737 BEFORE COLLISIONS OF DIVS
-	}
-	
-	#buttonsContainer {
-		border: 0px solid red;
-		min-height: 100px;
-		min-width: 50%;
-		width: auto;
-		float: right;
-		text-align: right;
-		margin-right: 1%;
-		top: 45%;
-		transform: translateY(45%);
-		-webkit-transform: translateY(45%);
-	}
-	
-	#buttonsContainer .menuButtons {
-		background: none;
-		padding: none;
-		margin: none;
-		border: none;
-	}
-	
-	#buttonsContainer .menuButtons:hover {
-		border-bottom: 1px solid #cc0000;
-		color: rgb(204, 0, 0);
-	}
-	
-	#mainMenu, .mainButtons { 
-		/* The "Menu" button and all related buttons should not be present when the max-width > 752 */
-		display: none;
-	}
-	
-	@media screen and (max-width: 752px) {
-		
-		#OG {
-			display: block;
-			margin: 0 auto;
-		}
-		
-		#buttonsContainer , .menuButtons , #buttonsContainer .menuButtons{
-			display: none;
-		}
-		
-		#mainMenu {
-			background-color: #d9d9d9;
-			display: block;
-			height: 50px;
-			width: 90%;
-			margin-left: 5%;
-			cursor: pointer;
-			border: none;
-			border-bottom: 1px solid white;
-			outline:none;
-		}
-		
-		.mainButtons {
-			display: none;
-			border: none;
-			height: 50px;
-			width: 90%;
-			margin-left: 5%;
-			padding: 2% 1%;	
-			background-color: #f2f2f2;
-		}
-		
-		.mainButtons:hover {
-			border-top: 1px solid #cc0000;
-			border-bottom: 1px solid #cc0000;
-			color: rgb(204, 0, 0);//#cc0000;
-		}
-	}
-	
-</style>
-<body>
-
-<div id = "header">
-
-	<img src = "https://raw.githubusercontent.com/Razat94/OSTC/master/Github%20Images/OSLC%20OG.jpg" id = "OG">
-	
-	<div id = "buttonsContainer">
-		<button class = "menuButtons">Home</button>
-		<button class = "menuButtons">Classes</button>
-		<button class = "menuButtons">Workshops</button>
-		<button class = "menuButtons">About</button>
-		<button class = "menuButtons">Contact</button>
-	</div>
-</div>
-
-	<!-- Display the "Menu" Buttons" when Max Width is 738 -->
-	<button id = "mainMenu"> Menu
-		<button class = "mainButtons">Home</button>
-		<button class = "mainButtons">Classes</button>
-		<button class = "mainButtons">Workshops</button>
-		<button class = "mainButtons">About</button>
-		<button class = "mainButtons">Contact</button>
-	</button>
-
-</body>
 </html>
