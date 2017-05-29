@@ -1,3 +1,4 @@
+
 $(document).ready(function(){
 	
 	// The resize event is sent to the window element when the size of the browser window changes:
@@ -15,8 +16,41 @@ $(document).ready(function(){
 		
 	});
 	
- 	$("#mainMenu").click(function(){
-    		$(".mainButtons").slideToggle();
-  	});
+	// A person on stackoverflow stated this in regards to CSS/Javascript properties.
+	// "I would recommend using the JavaScript equivalent properties. e.g. borderColor instead of 'border-color'. 
+	// jQuery translates it for you but any translation makes your script slower."
+	
+	$("#mainMenu").mouseenter(function(){
+		if ($('.mainButtons').is(':hidden')) {
+			$('#mainMenu').css({
+				backgroundColor: 'rgb(217, 217, 217)'
+			});
+		}
+	});
+	
+	$("#mainMenu").mouseleave(function(){
+		if ($('.mainButtons').is(':hidden')) {
+			$('#mainMenu').css({
+				backgroundColor: 'rgb(242, 242, 242)'
+			});
+		} 
+	});
+	
+    $("#mainMenu").click(function(){
+		if ($('.mainButtons').is(':hidden')) {
+			$('#mainMenu').css({
+				backgroundColor: 'rgb(217, 217, 217)'
+			});
+		} 
+		 
+		else {
+			$('#mainMenu').css({
+				backgroundColor: 'rgb(242, 242, 242)'
+			});
+		}
+	
+        $(".mainButtons").slideToggle();
+		
+    });
 	
 });
