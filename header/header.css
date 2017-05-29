@@ -61,7 +61,7 @@
 		display: none;
 	}
 	
-	@media screen and (max-width: 752px) {
+	@media screen and (max-width: 760px) {
 		
 		#OG {
 			display: block;
