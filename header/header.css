@@ -1,4 +1,4 @@
-html, body {
+	html, body {
 		margin: 0;
 		padding: 0;
 	}
@@ -97,4 +97,5 @@ html, body {
 			border-bottom: 1px solid #cc0000;
 			color: rgb(204, 0, 0);//#cc0000;
 		}
+		
 	}
