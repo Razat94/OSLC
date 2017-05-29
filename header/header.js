@@ -1,4 +1,3 @@
-
 $(document).ready(function(){
 	
 	// The resize event is sent to the window element when the size of the browser window changes:
