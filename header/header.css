@@ -38,7 +38,8 @@
 		min-width: 55%;
 		width: auto;
 		float: right;
-		margin-right: 2%;
+		margin-right: 1%;
+		// Move the div element so that buttons align with picture.
 		top: 55%;
 		transform: translateY(55%);
 		-webkit-transform: translateY(55%);
@@ -47,7 +48,7 @@
 	#buttonsContainer .menuButtons {
 		border: 0px solid red;
 		background: none;
-		padding: 0px 1.5%;
+		padding: 0px 2%;
 		margin: auto;
 		float: right;
 		cursor: pointer;
