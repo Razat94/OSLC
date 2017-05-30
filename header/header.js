@@ -48,7 +48,7 @@ $(document).ready(function(){
 			});
 		}
 	
-        $(".mainButtons").slideToggle();
+        $(".mainButtons").slideToggle(300);
 		
     });
 	
