@@ -1,4 +1,4 @@
-html, body {
+	html, body {
 		margin: 0;
 		padding: 0;
 		background-color: #e6e6e6;
@@ -9,7 +9,10 @@ html, body {
 		font-family: 'Source Sans Pro';
 		font-style: normal;
 		font-weight: 300;
-		outline:none;
+		outline: none;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
 	}
 	
 	#header {
@@ -32,7 +35,7 @@ html, body {
 	}
 	
 	#buttonsContainer {
-		border: 1px solid purple;
+		border: 1px solid green;
 		height: 100%;
 		min-height: 100px;
 		min-width: 62%;
@@ -47,7 +50,8 @@ html, body {
 	#buttonsContainer .menuButtons {
 		border: 1px solid orange;
 		background: none;
-		padding: 0 auto;
+		padding: auto -10px;
+		//padding: 0 auto;
 		margin: auto;
 		float: right;
 		cursor: pointer;
