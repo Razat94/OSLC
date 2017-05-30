@@ -27,13 +27,13 @@ html, body {
 		border: 0px solid red;
 		width: 300px;
 		margin-left: 1%;
-		// Width 737 BEFORE COLLISIONS OF DIVS
+		// Width 730 BEFORE COLLISIONS OF DIVS
 	}
 	
 	#buttonsContainer {
 		border: 0px solid red;
 		min-height: 100px;
-		min-width: 50%;
+		min-width: 52%;
 		width: auto;
 		float: right;
 		text-align: right;
@@ -62,7 +62,7 @@ html, body {
 		display: none;
 	}
 	
-	@media screen and (max-width: 760px) {
+	@media screen and (max-width: 730px) {
 		
 		#OG {
 			display: block;
