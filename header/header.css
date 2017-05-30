@@ -24,7 +24,7 @@ html, body {
 	}
 
 	#OG {
-		border: 1px solid red;
+		border: 0px solid red;
 		height: 100px;
 		max-width: 35%;
 		margin-left: 1%;
@@ -32,10 +32,10 @@ html, body {
 	}
 	
 	#buttonsContainer {
-		border: 1px solid red;
+		border: 0px solid red;
 		height: 100%;
 		min-height: 100px;
-		min-width: 55%;
+		min-width: 60%;
 		width: auto;
 		float: right;
 		margin-right: 1%;
@@ -47,7 +47,7 @@ html, body {
 	#buttonsContainer .menuButtons {
 		background: none;
 		padding: none;
-		margin: none;
+		margin: autos;
 		border: none;
 		float: right;
 		cursor: pointer;
