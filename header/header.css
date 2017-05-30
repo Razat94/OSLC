@@ -1,4 +1,4 @@
-	html, body {
+html, body {
 		margin: 0;
 		padding: 0;
 		background-color: #e6e6e6;
@@ -24,7 +24,7 @@
 	}
 
 	#OG {
-		border: 0px solid red;
+		border: 1px solid red;
 		height: 100px;
 		max-width: 35%;
 		margin-left: 1%;
@@ -32,10 +32,10 @@
 	}
 	
 	#buttonsContainer {
-		border: 1px solid red;
+		border: 1px solid purple;
 		height: 100%;
 		min-height: 100px;
-		min-width: 60%;
+		min-width: 62%;
 		width: auto;
 		float: right;
 		margin-right: 1%;
@@ -45,9 +45,9 @@
 	}
 	
 	#buttonsContainer .menuButtons {
-		border: 1px solid blue;
+		border: 1px solid orange;
 		background: none;
-		padding: none;
+		padding: 0 auto;
 		margin: auto;
 		float: right;
 		cursor: pointer;
