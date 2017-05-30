@@ -10,9 +10,11 @@
 		font-style: normal;
 		font-weight: 300;
 		outline: none;
+		/*
 		-webkit-appearance: none;
 		-moz-appearance: none;
 		appearance: none;
+		*/
 	}
 	
 	#header {
@@ -35,7 +37,7 @@
 	}
 	
 	#buttonsContainer {
-		border: 1px solid green;
+		border: 1px solid black;
 		height: 100%;
 		min-height: 100px;
 		min-width: 62%;
@@ -48,10 +50,9 @@
 	}
 	
 	#buttonsContainer .menuButtons {
-		border: 1px solid orange;
+		border: 0px solid red;
 		background: none;
-		padding: auto -10px;
-		//padding: 0 auto;
+		padding: 0px 1%;
 		margin: auto;
 		float: right;
 		cursor: pointer;
