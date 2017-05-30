@@ -1,4 +1,4 @@
-	html, body {
+html, body {
 		margin: 0;
 		padding: 0;
 		background-color: #e6e6e6;
@@ -49,6 +49,7 @@
 		margin: none;
 		border: none;
 		float: right;
+		cursor: pointer;
 	}
 	
 	#buttonsContainer .menuButtons:hover {
@@ -98,6 +99,7 @@
 			border-top: 1px solid #cc0000;
 			border-bottom: 1px solid #cc0000;
 			color: rgb(204, 0, 0);//#cc0000;
+			cursor: pointer;
 		}
 		
 	}
