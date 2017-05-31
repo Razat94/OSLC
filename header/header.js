@@ -48,7 +48,7 @@ $(document).ready(function(){
 			});
 		}
 	
-        $(".mainButtons").slideToggle(300);
+        $(".mainButtons").fadeToggle();
 		
     });
 	
