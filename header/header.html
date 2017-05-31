@@ -58,17 +58,20 @@ $(document).ready(function(){
 			});
 		}
 	
-        $(".mainButtons").slideToggle();
+        $(".mainButtons").fadeToggle();
 		
     });
 	
 });
+
 </script>
 
 <style>
+	
 	html, body {
 		margin: 0;
 		padding: 0;
+		background-color: #e6e6e6;
 	}
 	
 	button {
@@ -76,7 +79,7 @@ $(document).ready(function(){
 		font-family: 'Source Sans Pro';
 		font-style: normal;
 		font-weight: 300;
-		outline:none;
+		outline: none;
 	}
 	
 	#header {
@@ -92,29 +95,32 @@ $(document).ready(function(){
 
 	#OG {
 		border: 0px solid red;
-		width: 300px;
-		margin-left: 1%;
-		// Width 737 BEFORE COLLISIONS OF DIVS
+		height: 100px;
+		max-width: 40%;
+		margin-left: 2%;
 	}
 	
 	#buttonsContainer {
-		border: 0px solid red;
+		border: 0px solid black;
+		height: 100%;
 		min-height: 100px;
-		min-width: 50%;
+		min-width: 55%;
 		width: auto;
 		float: right;
-		text-align: right;
 		margin-right: 1%;
-		top: 45%;
-		transform: translateY(45%);
-		-webkit-transform: translateY(45%);
+		// Move the div element so that buttons align with picture.
+		top: 55%;
+		transform: translateY(55%);
+		-webkit-transform: translateY(55%);
 	}
 	
 	#buttonsContainer .menuButtons {
+		border: 0px solid red;
 		background: none;
-		padding: none;
-		margin: none;
-		border: none;
+		padding: 0px 2%;
+		margin: auto;
+		float: right;
+		cursor: pointer;
 	}
 	
 	#buttonsContainer .menuButtons:hover {
@@ -127,9 +133,11 @@ $(document).ready(function(){
 		display: none;
 	}
 	
-	@media screen and (max-width: 752px) {
+	@media screen and (max-width: 730px) {
 		
 		#OG {
+			max-width: 100%;
+			width: auto;
 			display: block;
 			margin: 0 auto;
 		}
@@ -164,33 +172,69 @@ $(document).ready(function(){
 			border-top: 1px solid #cc0000;
 			border-bottom: 1px solid #cc0000;
 			color: rgb(204, 0, 0);//#cc0000;
+			cursor: pointer;
 		}
+		
 	}
 	
 </style>
 <body>
 
-<div id = "header">
-
-	<img src = "https://raw.githubusercontent.com/Razat94/OSTC/master/Github%20Images/OSLC%20OG.jpg" id = "OG">
+	<!-- DEFAULT FOR ALL PAGES -->
+	<div id = "header">
+		<img src = "https://raw.githubusercontent.com/Razat94/OSTC/master/Github%20Images/OSLC%20OG.jpg" id = "OG">
 	
-	<div id = "buttonsContainer">
-		<button class = "menuButtons">Home</button>
-		<button class = "menuButtons">Classes</button>
-		<button class = "menuButtons">Workshops</button>
-		<button class = "menuButtons">About</button>
-		<button class = "menuButtons">Contact</button>
+		<div id = "buttonsContainer">
+				
+			<!-- Buttons are inversed because they float to the right -->
+			<form action = "https://www.google.com">
+			<button class = "menuButtons">Contact</button>
+			</form>
+				
+			<form action = "https://www.youtube.com">
+			<button class = "menuButtons">About</button>
+			</form>
+				
+			<form action = "https://www.facebook.com">
+			<button class = "menuButtons">Workshops</button>
+			</form>
+				
+			<form action = "https://www.google.com">
+			<button class = "menuButtons">Classes</button>
+			</form>
+				
+			<form action = "https://razat94.github.io/OSLC/">
+			<button class = "menuButtons">Home</button>
+			</form>
+				
+		</div>
 	</div>
-</div>
 
 	<!-- Display the "Menu" Buttons" when Max Width is 738 -->
 	<button id = "mainMenu"> Menu
+			
+		<form action = "https://razat94.github.io/OSLC/">
 		<button class = "mainButtons">Home</button>
+		</form>
+			
+		<form action = "https://www.google.com">
 		<button class = "mainButtons">Classes</button>
+		</form>
+			
+		<form action = "https://www.facebook.com">
 		<button class = "mainButtons">Workshops</button>
+		</form>
+			
+		<form action = "https://www.youtube.com">
 		<button class = "mainButtons">About</button>
+		</form>
+			
+		<form action = "https://www.google.com">
 		<button class = "mainButtons">Contact</button>
+		</form>
+			
 	</button>
+	<!-- DEFAULT FOR ALL PAGES -->
 
 </body>
 </html>
