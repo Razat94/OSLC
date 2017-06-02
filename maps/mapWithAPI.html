@@ -1,0 +1,54 @@
+<!-- https://stackoverflow.com/questions/18130568/how-to-use-google-maps-without-a-key-from-static-to-dynamic-with-url
+-->
+
+<!DOCTYPE html>
+<html>
+
+<style>
+	#blah {
+		border: 5px solid red;
+		margin-left: 10%;
+		width: 80%;
+	}
+</style>
+
+<body>
+	
+<div id = "1">
+<p> yo </p>
+</div>
+
+<div id = "blah">
+</div>
+	
+<div id = "2">
+<p> hi </p>
+</div>
+
+
+</body>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWDMtSd11bOzl6dja5VBV_lsM6UELufo0&callback=myMap"></script>
+
+<script>
+function initialize() {
+    
+	var myCenter = new google.maps.LatLng(34.066404, -118.308821);
+	
+    var mapOptions = {
+        zoom: 12,
+        center: myCenter,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    }
+	
+    var mapCanvas = document.getElementById("blah");
+    mapCanvas.style.height = "500px";
+	
+    var map = new google.maps.Map(mapCanvas, mapOptions);
+	var marker = new google.maps.Marker({position:myCenter});
+	marker.setMap(map);
+}
+ google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+
+</html>
