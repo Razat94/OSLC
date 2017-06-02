@@ -2,15 +2,19 @@
 <html>
 <head>
 	<!-- https://stackoverflow.com/questions/925164/openstreetmap-embedding-map-in-webpage-like-google-maps -->
-	<!-- http://maptimeboston.github.io/leaflet-intro/ -->
-	<!-- http://leafletjs.com/examples.html -->
-	 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css">
+	 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css"
+   integrity="sha512-07I2e+7D8p6he1SIM+1twR5TIrhUQn9+I6yjqD53JQjFiMf8EtC93ty0/5vJTZGF8aAocvHYNEDJajGdNx1IsQ=="
+   crossorigin=""/>
    
 </head>
-	<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+
+	<script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"
+   integrity="sha512-A7vV8IFfih/D732iSSKi20u/ooOfj/AGehOKq0f4vLT1Zr2Y+RX7C+w8A1gaSasGtRUZpF/NZgzSAu4/Gc41Lg=="
+   crossorigin=""></script>
+   
 <body>
 <div id="map" style="height:250px; width: 50%;"></div>
-
+<script src="OpenLayers.js"></script>
 <script>
 
   var lon = 34.066404;
@@ -18,13 +22,12 @@
   var map = L.map('map').setView([lon, lat], 11);
 
 L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-    attribution: 'Tiles by <a href="http://mapc.org">MAPC</a>, Data by <a href="http://mass.gov/mgis">MassGIS</a>',
+    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
-L.marker([lon, lat]).addTo(map)
+L.marker([lon, lat ]).addTo(map)
     .bindPopup('One Step Learning Center')
     .openPopup();
-	
 </script>
 </body>
 </html>
