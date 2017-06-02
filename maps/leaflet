@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<!-- https://stackoverflow.com/questions/925164/openstreetmap-embedding-map-in-webpage-like-google-maps -->
+	<!-- http://maptimeboston.github.io/leaflet-intro/ -->
+	<!-- http://leafletjs.com/examples.html -->
+	 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css">
+   
+</head>
+	<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+<body>
+<div id="map" style="height:250px; width: 50%;"></div>
+
+<script>
+
+  var lon = 34.066404;
+  var lat = -118.308821;
+  var map = L.map('map').setView([lon, lat], 11);
+
+L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+    attribution: 'Tiles by <a href="http://mapc.org">MAPC</a>, Data by <a href="http://mass.gov/mgis">MassGIS</a>',
+}).addTo(map);
+
+L.marker([lon, lat]).addTo(map)
+    .bindPopup('One Step Learning Center')
+    .openPopup();
+	
+</script>
+</body>
+</html>
