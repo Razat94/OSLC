@@ -1,0 +1,64 @@
+    .mainContainer {
+			background-color: #f2f2f2;
+			min-height: 200px;
+			height: auto;
+			width: 90%;
+			margin-left: 5%;
+			border-top: 1px solid white;
+			border-bottom: 1px solid white;
+		}
+		
+		#leftDiv {
+			border: 0px solid red;
+			height: 95%;
+			width: 40%;
+			margin-top: 5%;
+			margin-left: 5%;
+			margin-bottom: 3%;
+			float: left; // RESPONSIVE
+		}
+		
+		#leftDiv img {
+			height: 100%;
+			width: 100%;
+		}
+		
+		#leftDiv p {
+			font-size: 15px;
+		}
+		
+		#rightDiv {
+			border: 0px solid red;
+			float: left; 
+			width: 44%;
+			height: auto;
+			margin-top: 5%;
+			margin-right: 5%;
+			margin-bottom: 3%;
+			margin-left: 5%;
+		}
+		
+		#rightDiv p:first-child { 
+			font-size: 25px;
+			line-height: 125%;
+		}
+		
+		#rightDiv p {
+			font-size: 21px;
+			margin-top: 0;
+			color: #444444;
+		}
+		
+		@media screen and (max-width: 730px) {
+			#leftDiv {
+				width: 90%;
+			}
+			
+			#rightDiv {
+				width: 90%;
+			}
+			
+			#rightDiv p {
+				font-size: 18px;
+			}
+		}
