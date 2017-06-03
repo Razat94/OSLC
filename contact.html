@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel = "stylesheet" id = "header" type = "text/css" href = "https://rawgit.com/Razat94/OSLC/master/header/header.css">
+		<link rel = "stylesheet" id = "footer" type = "text/css" href = "https://rawgit.com/Razat94/OSLC/master/Footer/footer.css">
+		
+		<link rel = "stylesheet" id = "container" type = "text/css" href = "https://rawgit.com/Razat94/OSLC/master/container.css">
+	</head>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://rawgit.com/Razat94/OSLC/master/header/header.js" type="text/javascript"></script>
+	
+	<style>
+	
+			#myMap {
+				height: 95%;
+				width: 90%;
+				margin-left: 5%;
+				margin-top: 5%;
+				margin-bottom: 3%;
+				float: left; // RESPONSIVE
+			}
+			
+			#leftDiv p {
+				font-size: 20px;
+				margin: auto;
+				text-align: center;
+			}
+			
+			@media screen and (max-width: 730px) {
+				#rightDiv {
+					margin-top: 0%;
+				}
+			}
+		
+	</style>
+
+	<body>
+
+		<!-- DEFAULT FOR ALL PAGES -->
+		<div id = "header">
+			<img src = "https://raw.githubusercontent.com/Razat94/OSTC/master/Github%20Images/OSLC%20OG.jpg" id = "OG">
+	
+			<div id = "buttonsContainer">
+				
+				<!-- Buttons are inversed because they float to the right -->
+				<form action = "https://razat94.github.io/OSLC/contact.html">
+				<button class = "menuButtons"><strong>Contact</strong></button>
+				</form>
+				
+				<form action = "https://razat94.github.io/OSLC/aboutMe.html">
+				<button class = "menuButtons">About</button>
+				</form>
+				
+				<form action = "https://www.facebook.com">
+				<button class = "menuButtons">Workshops</button>
+				</form>
+				
+				<form action = "https://www.google.com">
+				<button class = "menuButtons">Classes</button>
+				</form>
+				
+				<form action = "https://razat94.github.io/OSLC/">
+				<button class = "menuButtons">Home</button>
+				</form>
+				
+			</div>
+		</div>
+
+		<!-- Display the "Menu" Buttons" when Max Width is 738 -->
+		<button id = "mainMenu"> Menu
+			
+			<form action = "https://razat94.github.io/OSLC/">
+			<button class = "mainButtons">Home</button>
+			</form>
+			
+			<form action = "https://www.google.com">
+			<button class = "mainButtons">Classes</button>
+			</form>
+			
+			<form action = "https://www.facebook.com">
+			<button class = "mainButtons">Workshops</button>
+			</form>
+			
+			<form action = "https://razat94.github.io/OSLC/aboutMe.html">
+			<button class = "mainButtons">About</button>
+			</form>
+			
+			<form action = "https://razat94.github.io/OSLC/contact.html">
+			<button class = "mainButtons"><strong>Contact</strong></button>
+			</form>
+			
+		</button>
+		<!-- DEFAULT FOR ALL PAGES -->
+
+		<!-- About Me Section -->
+		<div class = "mainContainer">
+		
+			<div id = "leftDiv">
+				<div id = "myMap">
+				</div>
+				
+				<p>
+			    422 S. Western Ave, Ste 101
+				Los Angeles, CA 90020
+				
+				<br>
+				Mon - Fri: 10a – 8p
+				<br>
+				<strong>T:</strong> +1 213 263 2345
+				<br>
+				<strong>E:</strong> onestep.edu@gmail.com
+				
+				<hr style = "border: 1px solid white; float: right;" width="100%">
+				<strong>
+				</p>
+				
+			</div>	
+			
+			<div id = "rightDiv">
+		
+				<center>FAQs</center>
+				<p>
+				<br>
+				<strong>Q: What makes after school the right choice for my child?</strong>
+				<br>
+				<br>
+				A: After school programs are a great way for all children to improve in their development as they will be learning vital skills in a casual and positive environment. After school isn't just for students to work on their homework, they are also given the opportunity to get the help the need if they don't understand something that was taught at school.  Students can feel more comfortable working in this environment because they are able to ask questions at any time. 
+				<br>
+				<br>
+				<strong>Q: Why should I choose One Step Learning Center?</strong>
+				<br>
+				<br>
+				A: One Step Learning Center has a unique approach when it comes to the way we run our after school program. We provide our students with more than just tutoring and college prep services, we like to take it one step further and begin introducing our students to writing, mathematics, and sciences to get them interested in these subjects. We feel that our program, which offers supplemental learning courses, not only helps boost interest in these subjects, but better prepares students so that they will make better efforts in their school courses.
+				<br>
+				<br>
+				<strong>Q: How many times a week should I come to tutoring?</strong>
+				<br>
+				<br>
+				A: We begin by assessing each student's needs so that we can tailor the experience to be the most beneficial for that student. Our unique design encourages students to come every day by signing up for our Homework Club, and then from there they will be placed in level specific enrichment classes. However, students are welcome to sign up for one-on-one tutoring or subject specific study groups if every day attendance doesn't work with their schedule. 
+				</p>
+	
+			</div>
+		
+		<div id = "footer">
+			<p>422 S. Western Ave, Ste 101, Los Angeles, CA 90020</p>
+		</div>
+	</div>
+	</body>
+	
+	<script src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyBWDMtSd11bOzl6dja5VBV_lsM6UELufo0&callback=myMap"></script>
+
+	<script>
+	function initialize() {
+    
+		var myCenter = new google.maps.LatLng(34.066404, -118.308821);
+	
+		var mapOptions = {
+			zoom: 13,
+			center: myCenter,
+			mapTypeId: google.maps.MapTypeId.ROADMAP
+		}
+	
+		var mapCanvas = document.getElementById("myMap");
+		mapCanvas.style.height = "500px";
+	
+		var map = new google.maps.Map(mapCanvas, mapOptions);
+		var marker = new google.maps.Marker({position:myCenter});
+		marker.setMap(map);
+		
+		}
+	google.maps.event.addDomListener(window, 'load', initialize);
+	</script>
+  
+</html>
