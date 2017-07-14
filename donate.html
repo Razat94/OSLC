@@ -6,6 +6,7 @@
 	html, body {
 		padding: 0;
 		margin: 0;
+		background-color: white;
 	}
 	
 	p {
@@ -13,7 +14,6 @@
 		width: 70%;
 		display: inline-block;
 		font-size: 20px;
-		margin-bottom: 0px;
 		margin: 0;
 		padding: 0;
 	}
@@ -27,9 +27,16 @@
 	
 	.field {
 		border: 0px solid black;
-		width: 45%;
+		width: 40%;
 		display: inline-block;
 		margin-bottom: 1%;
+		margin-left: 5%;
+	}
+	
+	.container {
+		background-color: white;
+		width: 80%;
+		margin-left: 10%;
 	}
 	
 	.field p {
@@ -47,34 +54,46 @@
 	}
 		
 	.alert {
-		padding: 10px;
 		background-color: #f44336;
 		color: white;
 		position: absolute;
-		top: 0px;
+		bottom: 0px;
 		display: none;
 		font-size: 20px;
+		width: 100%;
+		vertical-align: center;
 	}
-
+	
+	.alert p {
+		margin-top: 13px;
+		padding: 0px;
+		width: 90%;
+	}
+	
 	.closebtn {
 		color: white;
 		font-weight: bold;
-		font-size: 20px;
-		line-height: 20px;
+		font-size: 50px;
 		cursor: pointer;
-		transition: 0.3s;
 		position: relative;
+		border: 0px solid green;
+		float: left;
+		transition: 0.3s;
 	}
-
+	
+	.closebtn:hover {
+		color: black;
+	}
 	
 </style>
 
 <body>
 
-	<div>
-		<h2> Enter your information below </h2>
+	<div style = "width: 80%; margin-left: 10%; text-align: center;">
+		<u><h2> Enter your information below </h2></u>
 	</div>
 
+	<div class = "container">
 	<div class = "field">
 		<p>Full name:</p>
 		<input>
@@ -88,22 +107,23 @@
 	</div>
 	
 	<div class = "field">
-		<p>Full name:</p>
+		<p>E-mail:</p>
 		<input>
 		<p></p>
 	</div>
 
 	<div class = "field">
-		<p>Credit Card Number:</p>
+		<p>Phone:</p>
 		<input>
 		<p></p>
+	</div>
 	</div>
 
 	<button onclick="mainFunction()">Test Input</button>
 	
 	<div class="alert">
 		<span class = "closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
-		<span>&#9888;</span>Your form has encountered an error. Press any key to continue.
+		<p> <span>&#9888;</span>Your form has encountered an error. Press any key to continue. </p>
 	</div>
 	
 	<p>
@@ -168,6 +188,8 @@ function fade(element) {
 
 // https://stackoverflow.com/questions/5597060/detecting-arrow-key-presses-in-javascript
 // https://stackoverflow.com/questions/6121203/how-to-do-fade-in-and-fade-out-with-javascript-and-css
+
+
 window.onkeydown = function(event) {
 	event = event.keyCode || window.event;
 	if (event < 10175) {
@@ -180,6 +202,8 @@ window.onkeydown = function(event) {
 window.onscroll = function() {
 	fade ( document.getElementsByClassName("alert")[0] );
 };
+
+
 
 
 function mainFunction() {
@@ -214,6 +238,8 @@ function mainFunction() {
 	
 }
 
+
+
 function nameChecker() {
 	
 	// According to a response from: https://stackoverflow.com/questions/21193437/can-i-select-multiple-tags-using-getelementsbytagname
@@ -240,6 +266,7 @@ function nameChecker() {
 	}
 	catch (err) {
 		errorMessage.innerHTML = "Input " + err;
+		firstDiv.getElementsByTagName("input")[0].style.border = "1px solid red";
 		return 0;
 	}
 	
@@ -267,6 +294,7 @@ function cardNumberCheck() {
     catch(err) {
         errorMessage.innerHTML = "Input is " + err;
 		//message.insertAdjacentHTML('afterend', "Input is" + err + "<br>");
+		secondDiv.getElementsByTagName("input")[0].style.border = "1px solid red";
 		return 0;
     }
 	
