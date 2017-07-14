@@ -7,7 +7,6 @@
 		padding: 0;
 		margin: 0;
 		background-color: #fafafa;//white;
-		
 	}
 	
 	p {
@@ -33,13 +32,15 @@
 	}
 	
 	.container:nth-of-type(2) {
-		margin-top: 5%;
+		margin-top: 3%;
 	}
 	
 	input {
 		display: block;
 		width: 100%;
-		min-height: 20px;
+		min-height: 30px;
+		font-size: 20px;
+		font-weight: normal;
 	}
 	
 	.field {
@@ -51,11 +52,11 @@
 	
 	.field p {
 		width: 100%;
+		font-size: 18px;
 	}
 	
 	.field p:nth-of-type(2) {
 		font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
-		font-size: 18px;
 		color: red;
 	}
 	
@@ -90,9 +91,7 @@
 		font-size: 50px;
 		cursor: pointer;
 		position: relative;
-		border: 0px solid green;
 		float: left;
-		transition: 0.3s;
 	}
 	
 	.closebtn:hover {
@@ -112,13 +111,7 @@
 	<div class = "container">
 	<div class = "field">
 		<p>Full name:</p>
-		<input>
-		<p></p>
-	</div>
-
-	<div class = "field">
-		<p>Credit Card Number:</p>
-		<input>
+		<input onblur = "nameChecker()">
 		<p></p>
 	</div>
 	
@@ -134,6 +127,29 @@
 		<p></p>
 	</div>
 	</div>
+	
+	
+	
+	<div class = "container">
+
+	<div class = "field">
+		<p>Card Number:</p>
+		<input onblur = "cardNumberCheck()">
+		<p></p>
+	</div>
+	
+	<div class = "field">
+		<p>Expiration Date: (MM/YY)</p>
+		<input>
+		<p></p>
+	</div>
+
+	<div class = "field">
+		<p>Security Code (CVC):</p>
+		<input>
+		<p></p>
+	</div>
+	</div>
 
 	<button id = "test" onclick="mainFunction()">Test Input</button>
 	
@@ -141,19 +157,6 @@
 		<span class = "closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
 		<p> <span>&#9888;</span>Your form has encountered an error. Press any key to continue. </p>
 	</div>
-	
-	<p>
-	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nec commodo libero. Suspendisse iaculis sollicitudin rhoncus. Aliquam consectetur tortor quis metus finibus, in finibus nibh ultrices. Donec ornare interdum elementum. Nunc ornare fermentum fringilla. Donec porttitor vel nunc sit amet consectetur. Aenean lacinia mi nisi, sit amet malesuada lacus porttitor at. Fusce blandit congue nibh, ac luctus urna dapibus vitae.
-
-Donec scelerisque nisl sed justo semper, quis suscipit elit auctor. Aliquam suscipit arcu vel turpis rhoncus, sit amet fermentum libero ullamcorper. Aenean porttitor diam a velit fermentum gravida. Pellentesque nec sodales odio, vitae convallis nisl. Maecenas ut condimentum leo. Fusce accumsan a nibh a euismod. Cras eleifend est arcu, in suscipit massa lobortis eu. Vestibulum eu commodo arcu. In semper commodo odio, id tristique purus.
-
-Quisque id fermentum sapien. Nunc ut iaculis metus, in iaculis enim. Nulla tempor justo ac gravida porttitor. Aliquam commodo justo nec ornare ullamcorper. Mauris non lectus est. Mauris pretium convallis risus. Praesent imperdiet nisi neque, vel placerat erat eleifend nec. Etiam et est ullamcorper, sagittis mauris nec, auctor sem. Fusce vehicula at justo a efficitur. Aenean facilisis arcu mi, id dignissim mi pretium sit amet. Duis placerat sollicitudin varius. Nunc feugiat rutrum gravida. Integer at malesuada nibh. Sed vitae enim nulla. Mauris felis odio, mattis at ornare eu, laoreet cursus leo.
-
-Donec neque neque, fermentum ac nunc et, pellentesque mollis turpis. Donec purus odio, posuere quis nisi at, viverra pulvinar tellus. Curabitur suscipit purus arcu, eu tincidunt leo malesuada in. Suspendisse porta tellus at interdum ullamcorper. Cras molestie consequat risus, non bibendum dolor commodo eu. Nullam at suscipit nisi. Aliquam erat volutpat. Sed orci quam, tempus nec eleifend et, mollis eu ipsum.
-
-Nullam lacinia a nunc in venenatis. Quisque arcu erat, elementum vel velit sed, scelerisque blandit libero. In hac habitasse platea dictumst. Mauris egestas, diam sed pulvinar imperdiet, risus lacus feugiat nisi, eget malesuada mi ex at mauris. Aenean in turpis non orci lobortis hendrerit sit amet nec turpis. Donec pellentesque nisl velit. Donec volutpat rutrum sapien in maximus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer pulvinar rutrum scelerisque. Sed purus ligula, efficitur et augue quis, condimentum varius eros. In at pellentesque augue. Cras rhoncus lacus vel libero placerat, a mattis tortor feugiat. Donec rutrum sem luctus, egestas augue ac, molestie arcu. Aliquam sed arcu nec elit viverra pulvinar. Donec malesuada, ante vel pellentesque eleifend, ligula nulla finibus tortor, nec consectetur purus urna quis ipsum.
-
-	</p>
 
 <script>
 // In regards to cyber security, the "Donations" page is completely insecure, because I'm running the check on the client side, not on the server side.
@@ -261,7 +264,9 @@ function nameChecker() {
 	
 	// According to a response from: https://stackoverflow.com/questions/21193437/can-i-select-multiple-tags-using-getelementsbytagname
 	// "you can't select multiple tags with a single call to getElementsByTagName"
-	var firstDiv = document.getElementsByClassName("field")[0]; // get's 1st div element with class "field" from document.
+	
+	var div = document.getElementsByClassName("container")[1];
+	var firstDiv = div.getElementsByClassName("field")[0]; // get's 1st div element with class "field" from document.
 	var input = firstDiv.getElementsByTagName("input")[0].value; // get the value from 1st input tag from firstDiv.
 	var errorMessage = firstDiv.getElementsByTagName("p")[1]; // set the error message to be the 2nd <p> in the 1st div element that is of class "field".
 	errorMessage.innerHTML = "";
@@ -283,10 +288,13 @@ function nameChecker() {
 	}
 	catch (err) {
 		errorMessage.innerHTML = "Input " + err;
-		firstDiv.getElementsByTagName("input")[0].style.border = "1px solid red";
+		firstDiv.getElementsByTagName("input")[0].style.border = "2px solid red";
 		return 0;
 	}
 	
+	// https://www.w3schools.com/jsref/event_onfocus.asp
+	// https://stackoverflow.com/questions/576319/reset-an-input-controls-border-color-html-javascript
+	firstDiv.getElementsByTagName("input")[0].style.removeProperty('border');
 	return 1;
 	
 }
@@ -294,7 +302,8 @@ function nameChecker() {
 
 
 function cardNumberCheck() {
-    var secondDiv = document.getElementsByClassName("field")[1]; // 2nd Div of class "field"
+	var div = document.getElementsByClassName("container")[2];
+    var secondDiv = div.getElementsByClassName("field")[0]; // 2nd Div of class "field"
 	var x = secondDiv.getElementsByTagName("input")[0].value;
 	var errorMessage = secondDiv.getElementsByTagName("p")[1]; // 2nd p element
     errorMessage.innerHTML = "";
@@ -311,10 +320,11 @@ function cardNumberCheck() {
     catch(err) {
         errorMessage.innerHTML = "Input is " + err;
 		//message.insertAdjacentHTML('afterend', "Input is" + err + "<br>");
-		secondDiv.getElementsByTagName("input")[0].style.border = "1px solid red";
+		secondDiv.getElementsByTagName("input")[0].style.border = "2px solid red";
 		return 0;
     }
 	
+	secondDiv.getElementsByTagName("input")[0].style.removeProperty('border');
 	return 1;
 }
 
