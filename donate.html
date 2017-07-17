@@ -122,13 +122,13 @@
 	
 	<div class = "field">
 		<p>E-mail:</p>
-		<input>
+		<input onblur = "emailCheck()">
 		<p></p>
 	</div>
 
 	<div class = "field">
 		<p>Phone:</p>
-		<input>
+		<input onblur = "phoneCheck()">
 		<p></p>
 	</div>
 	</div>
@@ -145,13 +145,13 @@
 	
 	<div class = "field">
 		<p>Expiration Date: (MM/YY)</p>
-		<input>
+		<input onblur = "dateCheck()">
 		<p></p>
 	</div>
 
 	<div class = "field">
 		<p>Security Code (CVC):</p>
-		<input>
+		<input onblur = "securityCodeCheck()">
 		<p></p>
 	</div>
 	</div>
@@ -173,6 +173,9 @@
 // However, I still had fun writing the program, and it still does a valid check assuming that a human being is manually entering input into the fields. 
 
 // Never validate credentials like this - do it on the server side as anything client side is practically worthless for security.
+
+// But keep in mind that one should not rely only upon JavaScript validation. 
+// JavaScript can easily be disabled. This should be validated on the server side as well.
 
 //document.getElementsByClassName("alert")[0].addEventListener("keypress", myFunction);
 
@@ -236,34 +239,21 @@ window.onscroll = function() {
 
 
 function mainFunction() {
+	var array_of_functions = [ nameChecker , emailCheck , phoneCheck , cardNumberCheck, dateCheck, securityCodeCheck] 
 	var value;
 	
-	value = nameChecker();
-	value = cardNumberCheck();
-	
-	if ( value == true ) document.getElementsByClassName("alert")[0].style.display = 'none';
-	else {
-		document.getElementsByClassName("alert")[0].style.display = 'block';
-		document.getElementsByClassName("alert")[0].style.opacity = '1';
+	// Loop thatt checks if any of the inputs are false and makes mainFunction() return false if there is one. Else 
+	for (var i = 0; i < array_of_functions.length; i++) {
+		value = array_of_functions[i]();
+		if ( value == 0 ) {
+			document.getElementsByClassName("alert")[0].style.display = 'block';
+			document.getElementsByClassName("alert")[0].style.opacity = '1';
+			return false;
+		}
+		
 	}
 	
-	// I want my script file to run through EVERY input tag, and see if the form is valid. Because then it's easier for the user, albeit it makes it more time inefficient.
-	/*
-	if ( nameChecker("name") && cardNumberCheck("cardNumber") ) document.getElementById("final").innerHTML = "nay";
-	else document.getElementById("final").innerHTML = "yay" ;
-	*/
-	
-	/*
-	try {
-		if ( !nameChecker("name") ) throw ("invalid");
-		if ( !cardNumberCheck("cardNumber") ) throw ("invalid");
-	}
-	
-	catch (err) {
-		document.getElementById("final").innerHTML = "NOOOOOOOOOOOOo" + err;
-		return 0;
-	}
-	*/
+	document.getElementsByClassName("alert")[0].style.display = 'none';
 	
 }
 
@@ -280,8 +270,8 @@ function nameChecker() {
 	var errorMessage = firstDiv.getElementsByTagName("p")[1]; // set the error message to be the 2nd <p> in the 1st div element that is of class "field".
 	errorMessage.innerHTML = "";
 	
-	//Exception handling is similar to the code below:
 	/*
+	//Exception handling is similar to the code below:
 	if (input.length == 0 || !isNaN(input) || input.length > 100 || ! ( /^[A-z -]+$/.test(input) ) ) {
 		errorMessage.innerHTML = "Input is incorrect ";
 		return 0;
@@ -295,6 +285,7 @@ function nameChecker() {
 		if (input.length > 100 ) throw ("is too big");
 		if ( ! ( /^[A-z -]+$/.test(input) ) ) throw ("contains invalid characters"); // Name only contains alphabetic characters from A-z and a hyphen(-).
 	}
+	
 	catch (err) {
 		errorMessage.innerHTML = "Input " + err;
 		firstDiv.getElementsByTagName("input")[0].style.border = "2px solid red";
@@ -306,6 +297,54 @@ function nameChecker() {
 	firstDiv.getElementsByTagName("input")[0].style.removeProperty('border');
 	return 1;
 	
+}
+
+function emailCheck() {
+	var div = document.getElementsByClassName("container")[1];
+    var secondDiv = div.getElementsByClassName("field")[1]; 
+	var input = secondDiv.getElementsByTagName("input")[0].value;
+	var errorMessage = secondDiv.getElementsByTagName("p")[1]; 
+    errorMessage.innerHTML = "";
+	
+	try {
+		if (input == "") throw "is empty";
+		if (input.length > 200 ) throw ("is too big");
+		if (!input.includes("@")) throw ("is not a valid e-mail address");
+		
+	}
+	
+	catch (err) {
+		errorMessage.innerHTML = "Input " + err;
+		secondDiv.getElementsByTagName("input")[0].style.border = "2px solid red";
+		return 0;
+	}
+	
+	secondDiv.getElementsByTagName("input")[0].style.removeProperty('border');
+	return 1;
+}
+
+function phoneCheck() {
+	var div = document.getElementsByClassName("container")[1];
+    var thirdDiv = div.getElementsByClassName("field")[2]; 
+	var x = thirdDiv.getElementsByTagName("input")[0].value;
+	var errorMessage = thirdDiv.getElementsByTagName("p")[1]; 
+    errorMessage.innerHTML = "";
+	
+	try {
+		if(x == "")  throw "empty";
+        if(isNaN(x)) throw "not a number";
+        if(Number(x) < 0 ) throw "a negative numbers";
+        if(Number(x) % 1 != 0 ) throw "a decimal numbers";
+	}
+	
+	catch (err) {
+		errorMessage.innerHTML = "Input " + err;
+		thirdDiv.getElementsByTagName("input")[0].style.border = "2px solid red";
+		return 0;
+	}
+	
+	thirdDiv.getElementsByTagName("input")[0].style.removeProperty('border');
+	return 1;
 }
 
 
@@ -386,6 +425,60 @@ function luhnCheck(val) {
     
 	return (sum % 10) == 0; // if the expression is true, then number passes the test.
 }
+
+function dateCheck() {
+	var div = document.getElementsByClassName("container")[2];
+    var secondDiv = div.getElementsByClassName("field")[1]; // 2nd Div of class "field"
+	var x = secondDiv.getElementsByTagName("input")[0].value;
+	var errorMessage = secondDiv.getElementsByTagName("p")[1]; // 2nd p element
+    errorMessage.innerHTML = "";
+	
+	try { 
+        if(x == "")  throw "empty";
+        if(isNaN(x)) throw "not a number";
+		if(x.length < 4) throw "too small";
+		if(x.length > 4) throw "too big";
+        if(Number(x) < 0 ) throw "a negative numbers";
+        if(Number(x) % 1 != 0 ) throw "a decimal numbers";
+    }
+    catch(err) {
+        errorMessage.innerHTML = "Input is " + err;
+		//message.insertAdjacentHTML('afterend', "Input is" + err + "<br>");
+		secondDiv.getElementsByTagName("input")[0].style.border = "2px solid red";
+		return 0;
+    }
+	
+	secondDiv.getElementsByTagName("input")[0].style.removeProperty('border');
+	return 1;
+}
+
+function securityCodeCheck() {
+	var div = document.getElementsByClassName("container")[2];
+    var secondDiv = div.getElementsByClassName("field")[2]; // 2nd Div of class "field"
+	var x = secondDiv.getElementsByTagName("input")[0].value;
+	var errorMessage = secondDiv.getElementsByTagName("p")[1]; // 2nd p element
+    errorMessage.innerHTML = "";
+	
+	try { 
+        if(x == "")  throw "empty";
+        if(isNaN(x)) throw "not a number";
+		if(x.length < 3) throw "too small";
+		if(x.length > 4) throw "too big";
+        if(Number(x) < 0 ) throw "a negative numbers";
+        if(Number(x) % 1 != 0 ) throw "a decimal numbers";
+    }
+    catch(err) {
+        errorMessage.innerHTML = "Input is " + err;
+		//message.insertAdjacentHTML('afterend', "Input is" + err + "<br>");
+		secondDiv.getElementsByTagName("input")[0].style.border = "2px solid red";
+		return 0;
+    }
+	
+	secondDiv.getElementsByTagName("input")[0].style.removeProperty('border');
+	return 1;
+	
+}
+
 </script>
 
 </body>
