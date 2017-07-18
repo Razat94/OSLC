@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
 
 <style>
 	
@@ -7,6 +10,7 @@
 		padding: 0;
 		margin: 0;
 		background-color: #fafafa;//white;
+		-webkit-text-size-adjust: none; /* Prevent font scaling in landscape */
 	}
 	
 	p {
@@ -162,30 +166,40 @@
 	</div>
 
 <script>
-// In regards to cyber security, the "Donations" page is completely insecure, because I'm running the check on the client side, not on the server side.
-// I'm sure it's possible for someone to write a program that can get past all of the field checks that I have set up by entering random garbage.
-// However, I still had fun writing the program, and it still does a valid check assuming that a human being is manually entering input into the fields. 
 
-// Never validate credentials like this - do it on the server side as anything client side is practically worthless for security.
+// GOOD TO KNOW
 
-// But keep in mind that one should not rely only upon JavaScript validation. 
-// JavaScript can easily be disabled. This should be validated on the server side as well.
-
-//document.getElementsByClassName("alert")[0].addEventListener("keypress", myFunction);
+// According to a response from: https://stackoverflow.com/questions/21193437/can-i-select-multiple-tags-using-getelementsbytagname
+// "you can't select multiple tags with a single call to getElementsByTagName"
 
 // https://stackoverflow.com/questions/14735197/activate-a-javascript-function-with-a-keypress
 // https://stackoverflow.com/questions/16089421/simplest-way-to-detect-keypresses-in-javascript
+// https://stackoverflow.com/questions/5597060/detecting-arrow-key-presses-in-javascript
+// https://stackoverflow.com/questions/6121203/how-to-do-fade-in-and-fade-out-with-javascript-and-css
+// https://www.w3schools.com/jsref/event_onfocus.asp
+// https://stackoverflow.com/questions/576319/reset-an-input-controls-border-color-html-javascript
 
+// LUHN CHECK CONTRADICTIONS	
+// https://www.rosettacode.org/wiki/Luhn_test_of_credit_card_numbers
+// https://www.youtube.com/watch?v=wsphC8V36i0
+// https://en.wikipedia.org/wiki/Luhn_algorithm
+// https://stackoverflow.com/questions/6176802/how-to-validate-credit-card-number
+// https://stackoverflow.com/questions/12761922/how-do-i-validate-credit-card-and-bank-account-numbers
+	
+// CONFLICTING 
+// https://www.fivecentnickel.com/how-do-you-know-if-a-credit-card-number-is-valid/
+// http://www.ee.unb.ca/cgi-bin/tervo/luhn.pl
+// http://www.freeformatter.com/credit-card-number-generator-validator.html
 
-//document.addEventListener("keypress", myFunction);
 /*
+//document.getElementsByClassName("alert")[0].addEventListener("keypress", myFunction);
+//document.addEventListener("keypress", myFunction);
 function myFunction() {
     document.getElementsByClassName("alert")[0].style.display = 'none';
 }
 */
 
 /*
-	
 function code(e) {
     e = e || window.event;
     return(e.keyCode || e.which);
@@ -212,14 +226,9 @@ function fade(element) {
 	document.getElementById("test").blur();
 }
 
-// https://stackoverflow.com/questions/5597060/detecting-arrow-key-presses-in-javascript
-// https://stackoverflow.com/questions/6121203/how-to-do-fade-in-and-fade-out-with-javascript-and-css
-
-
 window.onkeydown = function(event) {
 	event = event.keyCode || window.event;
 	if (event < 10175) {
-      // do a function
 		// myFunction();
 		fade ( document.getElementsByClassName("alert")[0] );
 	}
@@ -231,12 +240,11 @@ window.onscroll = function() {
 
 
 
-
 function mainFunction() {
 	var array_of_functions = [ nameChecker , emailCheck , phoneCheck , cardNumberCheck, dateCheck, securityCodeCheck] 
 	var value;
 	
-	// Loop thatt checks if any of the inputs are false and makes mainFunction() return false if there is one. Else 
+	// Loop thatt checks if any of the inputs are false and makes mainFunction() return false if there is one.
 	for (var i = 0; i < array_of_functions.length; i++) {
 		value = array_of_functions[i]();
 		if ( value == 0 ) {
@@ -244,19 +252,14 @@ function mainFunction() {
 			document.getElementsByClassName("alert")[0].style.opacity = '1';
 			return false;
 		}
-		
 	}
 	
 	document.getElementsByClassName("alert")[0].style.display = 'none';
-	
 }
 
 
 
 function nameChecker() {
-	
-	// According to a response from: https://stackoverflow.com/questions/21193437/can-i-select-multiple-tags-using-getelementsbytagname
-	// "you can't select multiple tags with a single call to getElementsByTagName"
 	
 	var div = document.getElementsByClassName("container")[1];
 	var firstDiv = div.getElementsByClassName("field")[0]; // get's 1st div element with class "field" from document.
@@ -282,12 +285,11 @@ function nameChecker() {
 	
 	catch (err) {
 		errorMessage.innerHTML = "Input " + err;
+		//message.insertAdjacentHTML('afterend', "Input is" + err + "<br>");
 		firstDiv.getElementsByTagName("input")[0].style.border = "2px solid red";
 		return 0;
 	}
-	
-	// https://www.w3schools.com/jsref/event_onfocus.asp
-	// https://stackoverflow.com/questions/576319/reset-an-input-controls-border-color-html-javascript
+
 	firstDiv.getElementsByTagName("input")[0].style.removeProperty('border');
 	return 1;
 	
@@ -361,7 +363,6 @@ function cardNumberCheck() {
     }
     catch(err) {
         errorMessage.innerHTML = "Input is " + err;
-		//message.insertAdjacentHTML('afterend', "Input is" + err + "<br>");
 		secondDiv.getElementsByTagName("input")[0].style.border = "2px solid red";
 		return 0;
     }
@@ -369,17 +370,6 @@ function cardNumberCheck() {
 	secondDiv.getElementsByTagName("input")[0].style.removeProperty('border');
 	return 1;
 }
-
-	// https://www.rosettacode.org/wiki/Luhn_test_of_credit_card_numbers
-	// https://www.youtube.com/watch?v=wsphC8V36i0
-	// https://en.wikipedia.org/wiki/Luhn_algorithm
-	// https://stackoverflow.com/questions/6176802/how-to-validate-credit-card-number
-	// https://stackoverflow.com/questions/12761922/how-do-i-validate-credit-card-and-bank-account-numbers
-	
-	// CONFLICTING 
-	// https://www.fivecentnickel.com/how-do-you-know-if-a-credit-card-number-is-valid/
-	// http://www.ee.unb.ca/cgi-bin/tervo/luhn.pl
-	// http://www.freeformatter.com/credit-card-number-generator-validator.html
 
 function luhnCheck(val) {
     var sum = 0;
@@ -422,9 +412,9 @@ function luhnCheck(val) {
 
 function dateCheck() {
 	var div = document.getElementsByClassName("container")[2];
-    var secondDiv = div.getElementsByClassName("field")[1]; // 2nd Div of class "field"
+    var secondDiv = div.getElementsByClassName("field")[1];
 	var x = secondDiv.getElementsByTagName("input")[0].value;
-	var errorMessage = secondDiv.getElementsByTagName("p")[1]; // 2nd p element
+	var errorMessage = secondDiv.getElementsByTagName("p")[1];
     errorMessage.innerHTML = "";
 	
 	try { 
@@ -437,7 +427,6 @@ function dateCheck() {
     }
     catch(err) {
         errorMessage.innerHTML = "Input is " + err;
-		//message.insertAdjacentHTML('afterend', "Input is" + err + "<br>");
 		secondDiv.getElementsByTagName("input")[0].style.border = "2px solid red";
 		return 0;
     }
@@ -448,9 +437,9 @@ function dateCheck() {
 
 function securityCodeCheck() {
 	var div = document.getElementsByClassName("container")[2];
-    var secondDiv = div.getElementsByClassName("field")[2]; // 2nd Div of class "field"
+    var secondDiv = div.getElementsByClassName("field")[2]; 
 	var x = secondDiv.getElementsByTagName("input")[0].value;
-	var errorMessage = secondDiv.getElementsByTagName("p")[1]; // 2nd p element
+	var errorMessage = secondDiv.getElementsByTagName("p")[1];
     errorMessage.innerHTML = "";
 	
 	try { 
@@ -463,7 +452,6 @@ function securityCodeCheck() {
     }
     catch(err) {
         errorMessage.innerHTML = "Input is " + err;
-		//message.insertAdjacentHTML('afterend', "Input is" + err + "<br>");
 		secondDiv.getElementsByTagName("input")[0].style.border = "2px solid red";
 		return 0;
     }
