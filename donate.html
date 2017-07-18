@@ -20,7 +20,6 @@
 	.container {
 		width: 80%;
 		margin-left: 10%;
-		border: 0px solid black;
 		background-color: #fafafa;
 	}
 	
@@ -34,16 +33,7 @@
 		margin-top: 3%;
 	}
 	
-	input {
-		display: block;
-		width: 100%;
-		min-height: 30px;
-		font-size: 20px;
-		font-weight: normal;
-	}
-	
 	.field {
-		border: 0px solid black;
 		width: 40%;
 		display: inline-block;
 		margin-bottom: 1%;
@@ -52,6 +42,13 @@
 	.field p {
 		width: 100%;
 		font-size: 18px;
+	}
+	
+	.field input {
+		display: block;
+		width: 100%;
+		min-height: 30px;
+		font-size: 20px;
 	}
 	
 	.field p:nth-of-type(2) {
@@ -64,43 +61,45 @@
 	}
 	
 	#test {
-		display: block;
 		border: 1px solid gray;
 		background-color: white;
 	}
 	
 	#test:hover {
-		background-color: #fafafa;
+		background-color: #f0f5fa;
 	}
 		
 	.alert {
+		padding: 20px;
 		background-color: #f44336;
 		color: white;
-		position: absolute;
-		bottom: 0px;
 		display: none;
-		font-size: 20px;
+		position: fixed;
+		bottom: 0;
 		width: 100%;
-		vertical-align: center;
-	}
-	
-	.alert p {
-		margin-top: 13px;
-		padding: 0px;
-		width: 90%;
 	}
 	
 	.closebtn {
+		margin-right: 30px;
 		color: white;
 		font-weight: bold;
+		float: right;
 		font-size: 50px;
+		line-height: 20px;
 		cursor: pointer;
-		position: relative;
-		float: left;
 	}
 	
 	.closebtn:hover {
 		color: black;
+	}
+	
+	@media screen and (max-width: 600px) {
+		
+		.field {
+			width: 100%;
+			margin: 0;
+		}
+		
 	}
 	
 </style>
@@ -108,63 +107,58 @@
 <body>
 
 	<div class = "container">
-	<div>
-		<h3> Enter your information below </h3>
-	</div>
+		<div>
+			<h3> Enter your information below </h3>
+		</div>
 	</div>
 
 	<div class = "container">
-	<div class = "field">
-		<p>Full name:</p>
-		<input onblur = "nameChecker()">
-		<p></p>
-	</div>
+		<div class = "field">
+			<p>Full name:</p>
+			<input onblur = "nameChecker()">
+			<p></p>
+		</div>
 	
-	<div class = "field">
-		<p>E-mail:</p>
-		<input onblur = "emailCheck()">
-		<p></p>
-	</div>
+		<div class = "field">
+			<p>E-mail:</p>
+			<input onblur = "emailCheck()">
+			<p></p>
+		</div>
 
-	<div class = "field">
-		<p>Phone:</p>
-		<input onblur = "phoneCheck()">
-		<p></p>
-	</div>
-	</div>
-	
-	
-	
-	<div class = "container">
-
-	<div class = "field">
-		<p>Card Number:</p>
-		<input onblur = "cardNumberCheck()">
-		<p></p>
-	</div>
-	
-	<div class = "field">
-		<p>Expiration Date: (MM/YY)</p>
-		<input onblur = "dateCheck()">
-		<p></p>
-	</div>
-
-	<div class = "field">
-		<p>Security Code (CVC):</p>
-		<input onblur = "securityCodeCheck()">
-		<p></p>
-	</div>
+		<div class = "field">
+			<p>Phone:</p>
+			<input onblur = "phoneCheck()">
+			<p></p>
+		</div>
 	</div>
 	
 	<div class = "container">
-
-	<button id = "test" onclick="mainFunction()">Test Input</button>
+		<div class = "field">
+			<p>Card Number:</p>
+			<input onblur = "cardNumberCheck()">
+			<p></p>
+		</div>
 	
+		<div class = "field">
+			<p>Expiration Date: (MM/YY)</p>
+			<input onblur = "dateCheck()">
+			<p></p>
+		</div>
+
+		<div class = "field">
+			<p>Security Code (CVC):</p>
+			<input onblur = "securityCodeCheck()">
+			<p></p>
+		</div>
+	</div>
+	
+	<div class = "container">
+		<button id = "test" onclick="mainFunction()">Test Input</button>
 	</div>
 	
 	<div class="alert">
-		<span class = "closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
-		<p> <span>&#9888;</span>Your form has encountered an error. Press any key to continue. </p>
+		<span class = "closebtn" onclick = "this.parentElement.style.display='none';">&times;</span> 
+		<strong>&#9888;</strong>Your form has encountered an error. Press any key to continue. 
 	</div>
 
 <script>
