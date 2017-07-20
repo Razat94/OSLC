@@ -32,10 +32,7 @@
 			float: left; 
 			width: 44%;
 			height: auto;
-			margin-top: 5%;
-			margin-right: 5%;
-			margin-bottom: 3%;
-			margin-left: 5%;
+			margin: 4% 5%;
 		}
 		
 		#rightDiv p:first-child { 
@@ -44,7 +41,7 @@
 		}
 		
 		#rightDiv p {
-			font-size: 21px;
+			font-size: 20px;
 			margin-top: 0;
 			color: #444444;
 		}
