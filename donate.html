@@ -257,117 +257,95 @@ function mainFunction() {
 	document.getElementsByClassName("alert")[0].style.display = 'none';
 }
 
-
+function getInputField ( containerNumber , fieldNumber ) {
+	var containerDiv = document.getElementsByClassName("container")[containerNumber];
+	var fieldDiv = containerDiv.getElementsByClassName("field")[fieldNumber];
+	var input = fieldDiv.getElementsByTagName("input")[0];
+	return input;
+}
 
 function nameChecker() {
-	
-	var div = document.getElementsByClassName("container")[1];
-	var firstDiv = div.getElementsByClassName("field")[0]; // get's 1st div element with class "field" from document.
-	var input = firstDiv.getElementsByTagName("input")[0].value; // get the value from 1st input tag from firstDiv.
-	var errorMessage = firstDiv.getElementsByTagName("p")[1]; // set the error message to be the 2nd <p> in the 1st div element that is of class "field".
-	errorMessage.innerHTML = "";
-	
-	/*
-	//Exception handling is similar to the code below:
-	if (input.length == 0 || !isNaN(input) || input.length > 100 || ! ( /^[A-z -]+$/.test(input) ) ) {
-		errorMessage.innerHTML = "Input is incorrect ";
-		return 0;
-	}
-	else return 1;
-	*/
+	var input = getInputField ( 1 , 0 );
+	var errorMessage = input.parentElement.getElementsByTagName("p")[1];
 	
 	try {
-		if (input == "") throw "is empty";
-		if(!isNaN(input)) throw "contains numbers";
-		if (input.length > 100 ) throw ("is too big");
-		if ( ! ( /^[A-z -]+$/.test(input) ) ) throw ("contains invalid characters"); // Name only contains alphabetic characters from A-z and a hyphen(-).
+		if (input.value == "") throw "is empty";
+		if (!isNaN(input.value)) throw "contains numbers";
+		if (input.value.length > 100 ) throw ("is too big");
+		if ( ! ( /^[A-z -]+$/.test(input.value) ) ) throw ("contains invalid characters"); // Name only contains alphabetic characters from A-z and a hyphen(-).
 	}
 	
 	catch (err) {
 		errorMessage.innerHTML = "Input " + err;
-		//message.insertAdjacentHTML('afterend', "Input is" + err + "<br>");
-		firstDiv.getElementsByTagName("input")[0].style.border = "2px solid red";
+		input.style.border = "2px solid red";
 		return 0;
 	}
 
-	firstDiv.getElementsByTagName("input")[0].style.removeProperty('border');
+	input.style.removeProperty('border');
 	return 1;
-	
 }
 
 function emailCheck() {
-	var div = document.getElementsByClassName("container")[1];
-    var secondDiv = div.getElementsByClassName("field")[1]; 
-	var input = secondDiv.getElementsByTagName("input")[0].value;
-	var errorMessage = secondDiv.getElementsByTagName("p")[1]; 
-    errorMessage.innerHTML = "";
+	var input = getInputField ( 1 , 1 );
+	var errorMessage = input.parentElement.getElementsByTagName("p")[1]; 
 	
 	try {
-		if (input == "") throw "is empty";
-		if (input.length > 200 ) throw ("is too big");
-		if (!input.includes("@")) throw ("is not a valid e-mail address");
-		
+		if (input.value == "") throw "is empty";
+		if (input.value.length > 200 ) throw ("is too big");
+		if (!input.value.includes("@")) throw ("is not a valid e-mail address");
 	}
 	
 	catch (err) {
 		errorMessage.innerHTML = "Input " + err;
-		secondDiv.getElementsByTagName("input")[0].style.border = "2px solid red";
+		input.style.border = "2px solid red";
 		return 0;
 	}
 	
-	secondDiv.getElementsByTagName("input")[0].style.removeProperty('border');
+	input.style.removeProperty('border');
 	return 1;
 }
 
 function phoneCheck() {
-	var div = document.getElementsByClassName("container")[1];
-    var thirdDiv = div.getElementsByClassName("field")[2]; 
-	var x = thirdDiv.getElementsByTagName("input")[0].value;
-	var errorMessage = thirdDiv.getElementsByTagName("p")[1]; 
-    errorMessage.innerHTML = "";
+	var input = getInputField ( 1 , 2 );
+	var errorMessage = input.parentElement.getElementsByTagName("p")[1]; 
 	
 	try {
-		if(x == "")  throw "empty";
-        if(isNaN(x)) throw "not a number";
-        if(Number(x) < 0 ) throw "a negative numbers";
-        if(Number(x) % 1 != 0 ) throw "a decimal numbers";
+		if (input.value == "")  throw "empty";
+        if (isNaN(input.value)) throw "not a number";
+        if (Number(input.value) < 0 ) throw "a negative numbers";
+        if (Number(input.value) % 1 != 0 ) throw "a decimal numbers";
 	}
 	
 	catch (err) {
 		errorMessage.innerHTML = "Input " + err;
-		thirdDiv.getElementsByTagName("input")[0].style.border = "2px solid red";
+		input.style.border = "2px solid red";
 		return 0;
 	}
 	
-	thirdDiv.getElementsByTagName("input")[0].style.removeProperty('border');
+	input.style.removeProperty('border');
 	return 1;
 }
 
-
-
 function cardNumberCheck() {
-	var div = document.getElementsByClassName("container")[2];
-    var secondDiv = div.getElementsByClassName("field")[0]; // 2nd Div of class "field"
-	var x = secondDiv.getElementsByTagName("input")[0].value;
-	var errorMessage = secondDiv.getElementsByTagName("p")[1]; // 2nd p element
-    errorMessage.innerHTML = "";
+	var input = getInputField ( 2 , 0 );
+	var errorMessage = input.parentElement.getElementsByTagName("p")[1];
 	
     try { 
-        if(x == "")  throw "empty";
-        if(isNaN(x)) throw "not a number";
-		if(x.length < 10) throw "too small";
-		if(x.length > 19) throw "too big";
-        if(Number(x) < 0 ) throw "a negative numbers";
-        if(Number(x) % 1 != 0 ) throw "a decimal numbers";
-		if(!luhnCheck(x)) throw "not valid according to Luhns Algorithm";
+        if (input.value == "")  throw "empty";
+        if (isNaN(input.value)) throw "not a number";
+		if (input.value.length < 10) throw "too small";
+		if (input.value.length > 19) throw "too big";
+        if (Number(input.value) < 0 ) throw "a negative numbers";
+        if (Number(input.value) % 1 != 0 ) throw "a decimal numbers";
+		if (!luhnCheck(input.value)) throw "not valid according to Luhns Algorithm";
     }
     catch(err) {
         errorMessage.innerHTML = "Input is " + err;
-		secondDiv.getElementsByTagName("input")[0].style.border = "2px solid red";
+		input.style.border = "2px solid red";
 		return 0;
     }
 	
-	secondDiv.getElementsByTagName("input")[0].style.removeProperty('border');
+	input.style.removeProperty('border');
 	return 1;
 }
 
@@ -411,52 +389,46 @@ function luhnCheck(val) {
 }
 
 function dateCheck() {
-	var div = document.getElementsByClassName("container")[2];
-    var secondDiv = div.getElementsByClassName("field")[1];
-	var x = secondDiv.getElementsByTagName("input")[0].value;
-	var errorMessage = secondDiv.getElementsByTagName("p")[1];
-    errorMessage.innerHTML = "";
+	var x = getInputField ( 2 , 1 );
+	var errorMessage = x.parentElement.getElementsByTagName("p")[1];
 	
 	try { 
-        if(x == "")  throw "empty";
-        if(isNaN(x)) throw "not a number";
-		if(x.length < 4) throw "too small";
-		if(x.length > 4) throw "too big";
-        if(Number(x) < 0 ) throw "a negative numbers";
-        if(Number(x) % 1 != 0 ) throw "a decimal numbers";
+        if (x.value == "")  throw "empty";
+        if (isNaN(x.value)) throw "not a number";
+		if (x.value.length < 4) throw "too small";
+		if (x.value.length > 4) throw "too big";
+        if (Number(x.value) < 0 ) throw "a negative numbers";
+        if (Number(x.value) % 1 != 0 ) throw "a decimal numbers";
     }
     catch(err) {
         errorMessage.innerHTML = "Input is " + err;
-		secondDiv.getElementsByTagName("input")[0].style.border = "2px solid red";
+		x.style.border = "2px solid red";
 		return 0;
     }
 	
-	secondDiv.getElementsByTagName("input")[0].style.removeProperty('border');
+	x.style.removeProperty('border');
 	return 1;
 }
 
 function securityCodeCheck() {
-	var div = document.getElementsByClassName("container")[2];
-    var secondDiv = div.getElementsByClassName("field")[2]; 
-	var x = secondDiv.getElementsByTagName("input")[0].value;
-	var errorMessage = secondDiv.getElementsByTagName("p")[1];
-    errorMessage.innerHTML = "";
+	var x = getInputField ( 2 , 2 );
+	var errorMessage = x.parentElement.getElementsByTagName("p")[1];
 	
 	try { 
-        if(x == "")  throw "empty";
-        if(isNaN(x)) throw "not a number";
-		if(x.length < 3) throw "too small";
-		if(x.length > 4) throw "too big";
-        if(Number(x) < 0 ) throw "a negative numbers";
-        if(Number(x) % 1 != 0 ) throw "a decimal numbers";
+        if (x.value == "")  throw "empty";
+        if (isNaN(x.value)) throw "not a number";
+		if (x.value.length < 3) throw "too small";
+		if (x.value.length > 4) throw "too big";
+        if (Number(x.value) < 0 ) throw "a negative numbers";
+        if (Number(x.value) % 1 != 0 ) throw "a decimal numbers";
     }
     catch(err) {
         errorMessage.innerHTML = "Input is " + err;
-		secondDiv.getElementsByTagName("input")[0].style.border = "2px solid red";
+		x.style.border = "2px solid red";
 		return 0;
     }
 	
-	secondDiv.getElementsByTagName("input")[0].style.removeProperty('border');
+	x.style.removeProperty('border');
 	return 1;
 	
 }
