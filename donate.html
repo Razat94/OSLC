@@ -145,7 +145,7 @@
 	
 		<div class = "field">
 			<p>Expiration Date:</p>
-			<input onblur = "dateCheck()" placeholder = "MM/YY">
+			<input onblur = "dateCheck()" placeholder = "MM-YYYY">
 			<p></p>
 		</div>
 
@@ -178,6 +178,7 @@
 // https://stackoverflow.com/questions/6121203/how-to-do-fade-in-and-fade-out-with-javascript-and-css
 // https://www.w3schools.com/jsref/event_onfocus.asp
 // https://stackoverflow.com/questions/576319/reset-an-input-controls-border-color-html-javascript
+// https://ux.stackexchange.com/questions/106617/dd-mm-yy-or-dd-mm-yyyy
 
 // LUHN CHECK CONTRADICTIONS	
 // https://www.rosettacode.org/wiki/Luhn_test_of_credit_card_numbers
@@ -272,7 +273,7 @@ function nameChecker() {
 		if (input.value == "") throw "is empty";
 		if (!isNaN(input.value)) throw "contains numbers";
 		if (input.value.length > 100 ) throw ("is too big");
-		if ( ! ( /^[A-z -]+$/.test(input.value) ) ) throw ("contains invalid characters"); // Name only contains alphabetic characters from A-z and a hyphen(-).
+		if ( ! ( /[A-z -]+$/.test(input.value) ) ) throw ("contains invalid characters"); // Name only contains alphabetic characters from A-z and a hyphen(-).
 	}
 	
 	catch (err) {
@@ -394,12 +395,9 @@ function dateCheck() {
 	
 	try { 
         if (x.value == "")  throw "empty";
-        if (isNaN(x.value)) throw "not a number";
-		if (x.value.length < 4) throw "too small";
-		if (x.value.length > 4) throw "too big";
-        if (Number(x.value) < 0 ) throw "a negative numbers";
-        if (Number(x.value) % 1 != 0 ) throw "a decimal numbers";
+		if ( ! ( /\d{1,2}-\d{4}/.test(x.value) ) ) throw ("invalid date");
     }
+	
     catch(err) {
         errorMessage.innerHTML = "Input is " + err;
 		x.style.border = "2px solid red";
